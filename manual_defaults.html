@@ -1,0 +1,107 @@
+
+<!doctype html>
+<html>
+    <head>
+        <!-- Metatags -->
+        <!-- Charset -->
+        <meta charset="utf-8">
+        <!-- Mobile viewport optimized -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- SEO metadata -->
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
+        <!-- Title -->
+        <title>Default optional arguments</title>
+        <!-- Linktags -->
+        <!-- Stylesheets -->
+        <link href=".static/bootstrap.css" rel="stylesheet">
+        <link href=".static/pygments.css" rel="stylesheet">
+        <link href=".static/subcmd.css" rel="stylesheet">
+        <!-- Headextra -->
+    </head>
+    <body>
+        <div class="container">
+    <div class="section" id="default-optional-arguments">
+<h1>Default optional arguments<a class="headerlink" href="#default-optional-arguments" title="Permalink to this headline">¶</a></h1>
+<p>At this moment just built a command line tool but it has no commands implemented so its quite
+useless.</p>
+<p>But, perhaps you noticed on this simple example that there is always available two optional arguments,
+<em>help</em> and <em>version</em>. These, are the default optional arguments that every tool will have.</p>
+<p>Each one can be called both in condensed way ( -h and -v ) or in full way ( &#8211;help and &#8211;version )
+there will be no difference between them.</p>
+<div class="section" id="help-h-and-help">
+<h2>Help ( -h and &#8211;help )<a class="headerlink" href="#help-h-and-help" title="Permalink to this headline">¶</a></h2>
+<p>Help is a default optional argument used to show the basic usage message that are you seeing after executing the tool and to provide help and information of every command implemented.
+We will cover it in depth later.</p>
+<p>Calling help as an extended argument:</p>
+<div class="highlight-python"><pre>$ python myapp.py --help
+usage: myapp.py [-h] [-v] {} ...
+
+My cli application
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -v, --version
+
+subcommands:
+  valid subcommands
+
+  {}             additional help
+
+CLI rocks!</pre>
+</div>
+<p>Calling help as a condensed argument:</p>
+<div class="highlight-python"><pre>$ python myapp.py --h
+usage: myapp.py [-h] [-v] {} ...
+
+My cli application
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -v, --version
+
+subcommands:
+  valid subcommands
+
+  {}             additional help
+
+CLI rocks!</pre>
+</div>
+</div>
+<div class="section" id="version-v-and-version">
+<h2>Version ( -v and &#8211;version )<a class="headerlink" href="#version-v-and-version" title="Permalink to this headline">¶</a></h2>
+<p>Version is a default optional argument used to show the actual tool&#8217;s version number.</p>
+<p>Calling help as an extended argument:</p>
+<div class="highlight-python"><pre>$ python myapp.py --version
+myapp 0.2</pre>
+</div>
+<p>Calling help as an condensed argument:</p>
+<div class="highlight-python"><pre>$ python myapp.py -v
+myapp 0.2</pre>
+</div>
+</div>
+</div>
+
+        </div>
+        <footer>
+            <hr/>
+            Raül Pérez, <a href="mailto:repejota@gmail.com">repejota@gmail.com</a>
+        </footer>
+        <!-- Scripts -->
+        <script src=".static/jquery.js"></script>
+        <script src=".static/bootstrap.js"></script>
+        <script src=".static/underscore.js"></script>
+        <script src=".static/doctools.js"></script>
+        <script src=".static/subcmd.js"></script>
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                url_root: ''
+                , version: 'v0.0.1'
+                , collapse_index: false
+                , file_suffix: '.html'
+                , has_source:  true
+            };
+        </script>
+    </body>
+</html>

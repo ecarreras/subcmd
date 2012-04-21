@@ -1,0 +1,222 @@
+
+<!doctype html>
+<html>
+    <head>
+        <!-- Metatags -->
+        <!-- Charset -->
+        <meta charset="utf-8">
+        <!-- Mobile viewport optimized -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- SEO metadata -->
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
+        <!-- Title -->
+        <title>API Documentation</title>
+        <!-- Linktags -->
+        <!-- Stylesheets -->
+        <link href=".static/bootstrap.css" rel="stylesheet">
+        <link href=".static/pygments.css" rel="stylesheet">
+        <link href=".static/subcmd.css" rel="stylesheet">
+        <!-- Headextra -->
+    </head>
+    <body>
+        <div class="container">
+    <div class="section" id="api-documentation">
+<h1>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-subcmd.base">
+<span id="subcmd-base"></span><h2>subcmd.base<a class="headerlink" href="#module-subcmd.base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="subcmd.base.SubCommand">
+<em class="property">class </em><tt class="descclassname">subcmd.base.</tt><tt class="descname">SubCommand</tt><a class="headerlink" href="#subcmd.base.SubCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>This metaclass implements an entry point based on a standard
+command-subcommand in which any method belonging to a particular
+superclass that implements it and it starts with &#8220;do&#8221;.</p>
+<p>The class methods that start with &#8220;do&#8221; will serve as command and by
+decorators and arg option subcommands can be implemented and pass data to
+these subcommands to be processed.</p>
+<p>Example::</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CommandTool</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">Subcommand</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;CommandTool&quot;</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;A desc for CommandTool&quot;</span>
+    <span class="n">epilog</span> <span class="o">=</span> <span class="s">&quot;An epilog for CommandTool&quot;</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">object - A class implementing subcommands pattern.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-subcmd.decorators">
+<span id="subcmd-decorators"></span><h2>subcmd.decorators<a class="headerlink" href="#module-subcmd.decorators" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="subcmd.decorators.arg">
+<tt class="descclassname">subcmd.decorators.</tt><tt class="descname">arg</tt><big>(</big><em>*args</em>, <em>**kwds</em><big>)</big><a class="headerlink" href="#subcmd.decorators.arg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Option decorator.</p>
+<p>Adds an argument or an option to this command.</p>
+<p>Example option::</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@option</span><span class="p">(</span><span class="s">&#39;--log&#39;</span><span class="p">,</span> <span class="s">&#39;-l&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">&#39;log is on&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">do_foo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c"># do something</span>
+    <span class="c"># ...</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Example argument::</p>
+<div class="highlight-python"><pre>@arg('package', help='package to be (un)installed'))
+def do_foo(self):
+    # do something
+    # ...
+    pass</pre>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="subcmd.decorators.option">
+<tt class="descclassname">subcmd.decorators.</tt><tt class="descname">option</tt><big>(</big><em>*args</em>, <em>**kwds</em><big>)</big><a class="headerlink" href="#subcmd.decorators.option" title="Permalink to this definition">¶</a></dt>
+<dd><p>Option decorator.</p>
+<p>Adds an argument or an option to this command.</p>
+<p>Example option::</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@option</span><span class="p">(</span><span class="s">&#39;--log&#39;</span><span class="p">,</span> <span class="s">&#39;-l&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">&#39;log is on&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">do_foo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c"># do something</span>
+    <span class="c"># ...</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Example argument::</p>
+<div class="highlight-python"><pre>@arg('package', help='package to be (un)installed'))
+def do_foo(self):
+    # do something
+    # ...
+    pass</pre>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="subcmd.decorators.option_group">
+<tt class="descclassname">subcmd.decorators.</tt><tt class="descname">option_group</tt><big>(</big><em>*options</em><big>)</big><a class="headerlink" href="#subcmd.decorators.option_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combines option decorators.</p>
+<p>Combines a number of options or arguments for a single command.
+When two or more commands use option and / or arguments in a common manner,
+we can combine in a single sentence to make it more easy and clear
+implementation.</p>
+<p>Example::</p>
+<div class="highlight-python"><pre>option_group common_options = (
+    option ('--type','-t' action = 'store', help = 'Specify type')
+    arg ('package ', help = 'package to be (a) installed')
+    option ('--log', '-l', action = 'store_true', help = 'log is on ')
+)
+
+@option_group_common_options
+def do_foo(self):
+    # do something
+    # ...
+    pass</pre>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list - List of options and arguments</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-subcmd.app">
+<span id="subcmd-app"></span><h2>subcmd.app<a class="headerlink" href="#module-subcmd.app" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="subcmd.app.App">
+<em class="property">class </em><tt class="descclassname">subcmd.app.</tt><tt class="descname">App</tt><big>(</big><em>name=None</em>, <em>description=None</em>, <em>version=None</em>, <em>epilog=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#subcmd.app.App" title="Permalink to this definition">¶</a></dt>
+<dd><p>Commander object.</p>
+<p>Implements a Hippocampus entry point command that accepts options and
+arguments.
+All methods starting with &#8220;do&#8221; will become callable as a subcommands and
+will accept options and/or arguments defined as decorators.</p>
+<p>Example::</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">subcmd.app</span> <span class="kn">import</span> <span class="n">App</span>
+
+<span class="k">class</span> <span class="nc">Application</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;a description of the example app&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Application</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">cmdline</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Another example::</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">subcmd.app</span> <span class="kn">import</span> <span class="n">App</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="n">App</span><span class="p">()</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">cmdline</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="subcmd.app.App._argparse_subcmds">
+<tt class="descname">_argparse_subcmds</tt><em class="property"> = {}</em><a class="headerlink" href="#subcmd.app.App._argparse_subcmds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="subcmd.app.App.cmdline">
+<tt class="descname">cmdline</tt><big>(</big><big>)</big><a class="headerlink" href="#subcmd.app.App.cmdline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parsing cmdline and execution method.</p>
+<p>This class parses input from command line interface to extract the
+command, subcommands and arguments.
+It is also responsible for adding some default arguments for each
+command like:</p>
+<blockquote>
+<div><ul class="simple">
+<li>-v or &#8212;version</li>
+<li>-h or &#8212;help</li>
+</ul>
+</div></blockquote>
+<p>These arguments come already implemented by default and will be
+available automatically to any command and subcommand is implemented.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+        </div>
+        <footer>
+            <hr/>
+            Raül Pérez, <a href="mailto:repejota@gmail.com">repejota@gmail.com</a>
+        </footer>
+        <!-- Scripts -->
+        <script src=".static/jquery.js"></script>
+        <script src=".static/bootstrap.js"></script>
+        <script src=".static/underscore.js"></script>
+        <script src=".static/doctools.js"></script>
+        <script src=".static/subcmd.js"></script>
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                url_root: ''
+                , version: 'v0.0.1'
+                , collapse_index: false
+                , file_suffix: '.html'
+                , has_source:  true
+            };
+        </script>
+    </body>
+</html>
