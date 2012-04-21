@@ -3,4 +3,4 @@ doc:
 	@rm -rf .sources .static
 	@mv _sources .sources
 	@mv _static .static
-	@grep --exclude=Makefile -lr -e ".static" * | xargs sed -i "s/.static/.static/g"
+	@grep --exclude=Makefile -lr -e "_static" * | xargs sed -i "s/_static/static/g"
