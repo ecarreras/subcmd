@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html>
+<html language="en">
     <head>
         <!-- Metatags -->
         <!-- Charset -->
@@ -8,12 +8,13 @@
         <!-- Mobile viewport optimized -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- SEO metadata -->
-        <meta name="description" content="">
+        <meta name="description" content="A Python module that implements subcommands CLI pattern.">
         <meta name="keywords" content="">
-        <meta name="author" content="">
+        <meta name="author" content="Raul Perez, repejota@gmail.com">
         <!-- Title -->
         <title>Defining SubCommands</title>
         <!-- Linktags -->
+        <link rel="shortcut icon" href="static/subcmd.ico">
         <!-- Stylesheets -->
         <link href="static/bootstrap.css" rel="stylesheet">
         <link href="static/pygments.css" rel="stylesheet">
@@ -24,12 +25,106 @@
         <div class="container">
     <div class="section" id="defining-subcommands">
 <h1>Defining SubCommands<a class="headerlink" href="#defining-subcommands" title="Permalink to this headline">¶</a></h1>
-<p>Documentation not yet available</p>
+<p><strong>subcmd</strong> a python module for easily bulding multi-command scripts. So the
+main pourpose of this tool is to be able to implement a subcommand pattern wraped
+in a CLI interface.</p>
+<p>Subcommand pattern follows this call format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">command</span><span class="p">]</span> <span class="p">[</span><span class="n">subcommand</span><span class="p">]</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="p">[</span><span class="n">arguments</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>And an example call could be one like this one:</p>
+<div class="highlight-python"><pre>myapp action --verbose file.json</pre>
+</div>
+<p>Where <em>mytool</em> is our CLI interface program, <em>do_action</em> is the subcommand and <em>&#8211;verbose</em>
+and <em>file.json</em> both are arguments, one of them optional ( <em>&#8211;verbose</em> ).</p>
+<div class="section" id="defining-subcommands-in-intherited-mode">
+<h2>Defining Subcommands in intherited mode<a class="headerlink" href="#defining-subcommands-in-intherited-mode" title="Permalink to this headline">¶</a></h2>
+<p>Staring from the previous example of inherited class mode:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">subcmd.app</span> <span class="kn">import</span> <span class="n">App</span>
+
+<span class="k">class</span> <span class="nc">Application</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;myapp&quot;</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;My cli application&quot;</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="s">&quot;0.2&quot;</span>
+    <span class="n">epilog</span> <span class="o">=</span> <span class="s">&quot;CLI rocks!&quot;</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">Application</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">cmdline</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>A subcommand is defined by adding a method to this class which its name starts with <em>do_</em>.
+By default all methods starting with this prefix will be converted to commands.</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">subcmd.app</span> <span class="kn">import</span> <span class="n">App</span>
+
+<span class="k">class</span> <span class="nc">Application</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;myapp&quot;</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;My cli application&quot;</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="s">&quot;0.2&quot;</span>
+        <span class="n">epilog</span> <span class="o">=</span> <span class="s">&quot;CLI rocks!&quot;</span>
+
+        <span class="k">def</span> <span class="nf">do_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+                <span class="sd">&quot;&quot;&quot;Action subcommand&quot;&quot;&quot;</span>
+                <span class="k">print</span> <span class="s">&quot;execute action!&quot;</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="n">Application</span><span class="p">()</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">cmdline</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If you execute again your tool you will see how the new command is shown and is available.</p>
+<div class="highlight-python"><pre>usage: example_inherited.py [-h] [-v] {action} ...
+
+My cli application
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -v, --version
+
+subcommands:
+  valid subcommands
+
+  {action}       additional help
+    action       Action subcommand
+
+CLI rocks!</pre>
+</div>
+<p>And if you execute your action you will see its results:</p>
+<div class="highlight-python"><pre>python example_inherited.py action
+execute action!</pre>
+</div>
+</div>
+<div class="section" id="defining-subcommands-in-builder-mode">
+<h2>Defining Subcommands in builder mode<a class="headerlink" href="#defining-subcommands-in-builder-mode" title="Permalink to this headline">¶</a></h2>
+<p>Taking as reference again the past example:</p>
+<div class="highlight-python"><pre>from subcmd.app import App
+
+if __name__ == "__main__":
+        app = App(name="myapp",
+                          description="My cli application",
+                          version="0.2",
+                          epilog="CLI list!")s
+        app.cmdline()</pre>
+</div>
+<p><a class="reference internal" href="api.html#subcmd.app.App" title="subcmd.app.App"><tt class="xref py py-class docutils literal"><span class="pre">subcmd.app.App</span></tt></a> class provides methods to add, remove or list available
+commands.</p>
+<div class="section" id="adding-a-command">
+<h3>Adding a command<a class="headerlink" href="#adding-a-command" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="listing-available-commands">
+<h3>Listing available commands<a class="headerlink" href="#listing-available-commands" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="removing-an-existing-command">
+<h3>Removing an existing command<a class="headerlink" href="#removing-an-existing-command" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
 </div>
 
         </div>
         <footer>
             <hr/>
+            <div class="pull-right"><a href="index.html">Home</a> | <a href="#">Back to top</a></div>
             Raül Pérez, <a href="mailto:repejota@gmail.com">repejota@gmail.com</a>
         </footer>
         <!-- Scripts -->
@@ -46,6 +141,18 @@
                 , file_suffix: '.html'
                 , has_source:  true
             };
+        </script>
+        <!-- Analytics -->
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-31083649-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
         </script>
     </body>
 </html>

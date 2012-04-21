@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html>
+<html language="en">
     <head>
         <!-- Metatags -->
         <!-- Charset -->
@@ -8,12 +8,13 @@
         <!-- Mobile viewport optimized -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- SEO metadata -->
-        <meta name="description" content="">
+        <meta name="description" content="A Python module that implements subcommands CLI pattern.">
         <meta name="keywords" content="">
-        <meta name="author" content="">
+        <meta name="author" content="Raul Perez, repejota@gmail.com">
         <!-- Title -->
         <title>Install</title>
         <!-- Linktags -->
+        <link rel="shortcut icon" href="static/subcmd.ico">
         <!-- Stylesheets -->
         <link href="static/bootstrap.css" rel="stylesheet">
         <link href="static/pygments.css" rel="stylesheet">
@@ -37,12 +38,22 @@
 <div class="section" id="stable-version">
 <h3>Stable version<a class="headerlink" href="#stable-version" title="Permalink to this headline">¶</a></h3>
 <p>Current stable version is v0.0.1</p>
-<p><a href="" class="btn">Download stable version</a></p></div>
+<p style="margin-bottom: 20px">
+<a href="" class="btn">
+<i class="icon-download"></i>
+Download stable version
+</a>
+</p></div>
 <div class="section" id="development-version">
 <h3>Development version<a class="headerlink" href="#development-version" title="Permalink to this headline">¶</a></h3>
 <p>Trunk source code is not always stable, please look at our current issues
 for help and troubleshooting.</p>
-<p><a href="" class="btn">Download trunk version</a></p><p>Installing from sources involves the following steps:</p>
+<p style="margin-bottom: 20px">
+<a href="" class="btn">
+<i class="icon-download"></i>
+Download trunk version
+</a>
+</p><p>Installing from sources involves the following steps:</p>
 <div class="highlight-python"><pre>tar xvzmf subcmd-*.tar.gz
 cd subcmd
 python setup install</pre>
@@ -51,6 +62,9 @@ python setup install</pre>
 installation.</p>
 <p>For old versions and active development branches please, refer to the
 project Github <a class="reference external" href="http://github.com/repejota/subcmd">pages</a>.</p>
+<p>Once you have installed proceed to read the quick <a class="reference internal" href="tutorial.html#tutorial"><em>tutorial</em></a> or
+the in depth <a class="reference internal" href="manual.html#manual"><em>manual</em></a> and start to work with <strong>subcmd</strong>.</p>
+<p><a class="reference internal" href="tutorial.html#tutorial"><em>Next: Quick Tutorial</em></a></p>
 </div>
 </div>
 </div>
@@ -58,6 +72,7 @@ project Github <a class="reference external" href="http://github.com/repejota/su
         </div>
         <footer>
             <hr/>
+            <div class="pull-right"><a href="index.html">Home</a> | <a href="#">Back to top</a></div>
             Raül Pérez, <a href="mailto:repejota@gmail.com">repejota@gmail.com</a>
         </footer>
         <!-- Scripts -->
@@ -74,6 +89,18 @@ project Github <a class="reference external" href="http://github.com/repejota/su
                 , file_suffix: '.html'
                 , has_source:  true
             };
+        </script>
+        <!-- Analytics -->
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-31083649-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
         </script>
     </body>
 </html>

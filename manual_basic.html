@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html>
+<html language="en">
     <head>
         <!-- Metatags -->
         <!-- Charset -->
@@ -8,12 +8,13 @@
         <!-- Mobile viewport optimized -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- SEO metadata -->
-        <meta name="description" content="">
+        <meta name="description" content="A Python module that implements subcommands CLI pattern.">
         <meta name="keywords" content="">
-        <meta name="author" content="">
+        <meta name="author" content="Raul Perez, repejota@gmail.com">
         <!-- Title -->
         <title>Basic Usage</title>
         <!-- Linktags -->
+        <link rel="shortcut icon" href="static/subcmd.ico">
         <!-- Stylesheets -->
         <link href="static/bootstrap.css" rel="stylesheet">
         <link href="static/pygments.css" rel="stylesheet">
@@ -23,11 +24,15 @@
     <body>
         <div class="container">
     <div class="section" id="basic-usage">
-<h1>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h1>
+<span id="manual-basic"></span><h1>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h1>
 <p><strong>subcmd</strong> can be used either subclassing <a class="reference internal" href="api.html#subcmd.app.App" title="subcmd.app.App"><tt class="xref py py-class docutils literal"><span class="pre">subcmd.app.App</span></tt></a> class or directly calling
 its methods as a builder.</p>
 <div class="section" id="inherited-class">
 <h2>Inherited Class<a class="headerlink" href="#inherited-class" title="Permalink to this headline">¶</a></h2>
+<p>In inherited class mode just create a class that inherits from <a class="reference internal" href="api.html#subcmd.app.App" title="subcmd.app.App"><tt class="xref py py-class docutils literal"><span class="pre">subcmd.app.App</span></tt></a>. To
+customize this class just override its constructor and set the proprerties as you like.</p>
+<p>We will see how to customize this inherited class on next chapter.</p>
+<p>Here is the simples example tool that you can build using inherited class.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">subcmd.app</span> <span class="kn">import</span> <span class="n">App</span>
 
 <span class="k">class</span> <span class="nc">Application</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
@@ -41,6 +46,10 @@ its methods as a builder.</p>
 </div>
 <div class="section" id="builder-api">
 <h2>Builder API<a class="headerlink" href="#builder-api" title="Permalink to this headline">¶</a></h2>
+<p>In builer mode instanciate main <a class="reference internal" href="api.html#subcmd.app.App" title="subcmd.app.App"><tt class="xref py py-class docutils literal"><span class="pre">subcmd.app.App</span></tt></a> class. This object provides an full API
+to build appending commands to it, customizing them settings properties as you build your tool.</p>
+<p>We will see how to build an complete tool using <a class="reference internal" href="api.html#subcmd.app.App" title="subcmd.app.App"><tt class="xref py py-class docutils literal"><span class="pre">subcmd.app.App</span></tt></a> API on next chapter.</p>
+<p>Here is the simplest example tool that you can build using builder API.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">subcmd.app</span> <span class="kn">import</span> <span class="n">App</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
@@ -118,12 +127,18 @@ subcommands:
 
 CLI rocks!</pre>
 </div>
+<p>Next we are going to see how to work with arguments, specifically the default arguments that
+every tool will have.</p>
+<p>This arguments are setted up automatically by <a class="reference internal" href="api.html#subcmd.app.App" title="subcmd.app.App"><tt class="xref py py-class docutils literal"><span class="pre">subcmd.app.App</span></tt></a> class and you don&#8217;t
+need to do anything to use them.</p>
+<p><a class="reference internal" href="manual_defaults.html#manual-defaults"><em>Next: Default optional arguments</em></a></p>
 </div>
 </div>
 
         </div>
         <footer>
             <hr/>
+            <div class="pull-right"><a href="index.html">Home</a> | <a href="#">Back to top</a></div>
             Raül Pérez, <a href="mailto:repejota@gmail.com">repejota@gmail.com</a>
         </footer>
         <!-- Scripts -->
@@ -140,6 +155,18 @@ CLI rocks!</pre>
                 , file_suffix: '.html'
                 , has_source:  true
             };
+        </script>
+        <!-- Analytics -->
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-31083649-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
         </script>
     </body>
 </html>

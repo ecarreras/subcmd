@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html>
+<html language="en">
     <head>
         <!-- Metatags -->
         <!-- Charset -->
@@ -8,12 +8,13 @@
         <!-- Mobile viewport optimized -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- SEO metadata -->
-        <meta name="description" content="">
+        <meta name="description" content="A Python module that implements subcommands CLI pattern.">
         <meta name="keywords" content="">
-        <meta name="author" content="">
+        <meta name="author" content="Raul Perez, repejota@gmail.com">
         <!-- Title -->
         <title>subcmd</title>
         <!-- Linktags -->
+        <link rel="shortcut icon" href="static/subcmd.ico">
         <!-- Stylesheets -->
         <link href="static/bootstrap.css" rel="stylesheet">
         <link href="static/pygments.css" rel="stylesheet">
@@ -31,7 +32,7 @@ documentation, grouped arguments helpers and a rich
 <abbr title="Command line interface">CLI</abbr> tools and utilities.</p>
 <p>It is licensed with the <a class="reference external" href="http://en.wikipedia.org/wiki/BSD_licenses#3-clause_license_.28.22New_BSD_License.22_or_.22Modified_BSD_License.22.29">BSD three-clause</a>
 license.</p>
-<p>A common cli tool built with <strong>subcmd</strong> follows a pattern like:</p>
+<p>A common <abbr title="Command line interface">CLI</abbr> tool built with <strong>subcmd</strong> follows a pattern like:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">command</span><span class="p">]</span> <span class="p">[</span><span class="n">subcommand</span><span class="p">]</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="p">[</span><span class="n">arguments</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -53,12 +54,17 @@ license.</p>
 this project please go to its
 <a class="reference external" href="http://github.com/repejota/subcmd">Github repository site</a> and file a bug
 or write him a message.</p>
-</div>
+      <div style="margin-top: 2.5em">
+      <iframe height="20px" frameborder="0" width="85px" scrolling="0" allowtransparency="true" src="http://markdotto.github.com/github-buttons/github-btn.html?user=repejota&amp;repo=subcmd&amp;type=watch&amp;count=true" class="github-btn"></iframe>
+
+<iframe height="20px" frameborder="0" width="85px" scrolling="0" allowtransparency="true" src="http://markdotto.github.com/github-buttons/github-btn.html?user=repejota&amp;repo=subcmd&amp;type=fork&amp;count=true" class="github-btn"></iframe>
+</p></div>
 </div>
 
         </div>
         <footer>
             <hr/>
+            <div class="pull-right"><a href="index.html">Home</a> | <a href="#">Back to top</a></div>
             Raül Pérez, <a href="mailto:repejota@gmail.com">repejota@gmail.com</a>
         </footer>
         <!-- Scripts -->
@@ -75,6 +81,18 @@ or write him a message.</p>
                 , file_suffix: '.html'
                 , has_source:  true
             };
+        </script>
+        <!-- Analytics -->
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-31083649-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
         </script>
     </body>
 </html>

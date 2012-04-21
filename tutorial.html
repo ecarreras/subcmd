@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html>
+<html language="en">
     <head>
         <!-- Metatags -->
         <!-- Charset -->
@@ -8,12 +8,13 @@
         <!-- Mobile viewport optimized -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- SEO metadata -->
-        <meta name="description" content="">
+        <meta name="description" content="A Python module that implements subcommands CLI pattern.">
         <meta name="keywords" content="">
-        <meta name="author" content="">
+        <meta name="author" content="Raul Perez, repejota@gmail.com">
         <!-- Title -->
         <title>Tutorial</title>
         <!-- Linktags -->
+        <link rel="shortcut icon" href="static/subcmd.ico">
         <!-- Stylesheets -->
         <link href="static/bootstrap.css" rel="stylesheet">
         <link href="static/pygments.css" rel="stylesheet">
@@ -23,7 +24,7 @@
     <body>
         <div class="container">
     <div class="section" id="tutorial">
-<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
 <p>The most simple example use of <strong>subcmd</strong> is a class that inherits from
 <a class="reference internal" href="api.html#subcmd.app.App" title="subcmd.app.App"><tt class="xref py py-class docutils literal"><span class="pre">subcmd.app.App</span></tt></a> base object. Then ( and by default ), all methods
 of this created class which starts with prefix &#8220;<em>do_</em>&#8221; will be available
@@ -86,11 +87,13 @@ based tools like <tt class="docutils literal"><span class="pre">--version</span>
 arguments are specified ).</p>
 <p><strong>subcmd</strong> provides a lot of more features and customization options, refer to
 the detailed <a class="reference internal" href="manual.html#manual"><em>manual</em></a> for more information.</p>
+<p><a class="reference internal" href="manual.html#manual"><em>Next: Complete Manual</em></a></p>
 </div>
 
         </div>
         <footer>
             <hr/>
+            <div class="pull-right"><a href="index.html">Home</a> | <a href="#">Back to top</a></div>
             Raül Pérez, <a href="mailto:repejota@gmail.com">repejota@gmail.com</a>
         </footer>
         <!-- Scripts -->
@@ -107,6 +110,18 @@ the detailed <a class="reference internal" href="manual.html#manual"><em>manual<
                 , file_suffix: '.html'
                 , has_source:  true
             };
+        </script>
+        <!-- Analytics -->
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-31083649-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
         </script>
     </body>
 </html>
