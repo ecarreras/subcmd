@@ -138,7 +138,7 @@ def do_foo(self):
 <dl class="class">
 <dt id="subcmd.app.App">
 <em class="property">class </em><tt class="descclassname">subcmd.app.</tt><tt class="descname">App</tt><big>(</big><em>name=None</em>, <em>description=None</em>, <em>version=None</em>, <em>epilog=None</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#subcmd.app.App" title="Permalink to this definition">¶</a></dt>
-<dd><p>Commander object.</p>
+<dd><p>CLI object entry point.</p>
 <p>Implements a Hippocampus entry point command that accepts options and
 arguments.
 All methods starting with &#8220;do&#8221; will become callable as a subcommands and
@@ -169,6 +169,12 @@ will accept options and/or arguments defined as decorators.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="subcmd.app.App.add_command">
+<tt class="descname">add_command</tt><big>(</big><em>name</em>, <em>command_func</em><big>)</big><a class="headerlink" href="#subcmd.app.App.add_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new command</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="subcmd.app.App.cmdline">
 <tt class="descname">cmdline</tt><big>(</big><big>)</big><a class="headerlink" href="#subcmd.app.App.cmdline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parsing cmdline and execution method.</p>
@@ -192,6 +198,42 @@ available automatically to any command and subcommand is implemented.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="subcmd.app.App.description">
+<tt class="descname">description</tt><a class="headerlink" href="#subcmd.app.App.description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Application&#8217;s description</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="subcmd.app.App.epilog">
+<tt class="descname">epilog</tt><a class="headerlink" href="#subcmd.app.App.epilog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Application&#8217;s epilog</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="subcmd.app.App.list_commands">
+<tt class="descname">list_commands</tt><big>(</big><big>)</big><a class="headerlink" href="#subcmd.app.App.list_commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new command</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="subcmd.app.App.name">
+<tt class="descname">name</tt><a class="headerlink" href="#subcmd.app.App.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Application&#8217;s name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="subcmd.app.App.remove_command">
+<tt class="descname">remove_command</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#subcmd.app.App.remove_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes an existing command</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="subcmd.app.App.version">
+<tt class="descname">version</tt><a class="headerlink" href="#subcmd.app.App.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get current application version</p>
 </dd></dl>
 
 </dd></dl>

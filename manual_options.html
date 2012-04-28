@@ -24,12 +24,119 @@
     <body>
         <div class="container">
     <div class="section" id="defining-command-line-optional-arguments">
-<h1>Defining Command Line Optional Arguments<a class="headerlink" href="#defining-command-line-optional-arguments" title="Permalink to this headline">¶</a></h1>
-<div class="alert alert-block">
-<a class="close" data-dismiss="alert">&times;</a>
-<h4 class="alert-heading">Warning!</h4>
-Documentation not yet available.
-</div></div>
+<span id="manual-options"></span><h1>Defining Command Line Optional Arguments<a class="headerlink" href="#defining-command-line-optional-arguments" title="Permalink to this headline">¶</a></h1>
+<p>Now we have commands in our CLI tool its time to add some modificators to
+them. With <strong>subcmd</strong> adding modificators means to append <em>arguments</em> to one
+or more commands.</p>
+<p>There is two types or argugments in <strong>subcmd</strong>, <em>optional arguments</em> or
+<em>options</em> and <em>parameters</em> or <em>arguments</em>.</p>
+<p>In this chapter we will cover the first kind of arguments.</p>
+<p>Command Line Optional Arguments are also called <em>flags</em> or <em>switches</em> beacuse
+its pourpose is to modify the operation of a command.</p>
+<div class="section" id="command-line-optional-arguments-in-inherited-mode">
+<h2>Command Line Optional Arguments in inherited mode<a class="headerlink" href="#command-line-optional-arguments-in-inherited-mode" title="Permalink to this headline">¶</a></h2>
+<p>If you are using inherited mode in <strong>subcmd</strong> adding optional arguments
+involves python decorators.</p>
+<p>Lets take the example command we added in the previous chapter and modify its
+operation adding an optional argument.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">subcmd.app</span> <span class="kn">import</span> <span class="n">App</span>
+
+<span class="k">class</span> <span class="nc">Application</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;myapp&quot;</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;My cli application&quot;</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="s">&quot;0.2&quot;</span>
+        <span class="n">epilog</span> <span class="o">=</span> <span class="s">&quot;CLI rocks!&quot;</span>
+
+        <span class="k">def</span> <span class="nf">do_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+                <span class="sd">&quot;&quot;&quot;Action subcommand&quot;&quot;&quot;</span>
+                <span class="k">print</span> <span class="s">&quot;execute action!&quot;</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="n">Application</span><span class="p">()</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">cmdline</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Image we want to add a flag that when its active no out will be printed to
+stdout. To add this optional argument we need to decorate our created
+<em>do_action</em> command like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">subcmd.decorators</span> <span class="kn">import</span> <span class="n">option</span>
+
+<span class="nd">@option</span><span class="p">(</span><span class="s">&#39;-q&#39;</span><span class="p">,</span> <span class="s">&#39;--quiet&#39;</span><span class="p">,</span>
+        <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s">&#39;Quiet mode, no print to stdout&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">do_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Action subcommand&quot;&quot;&quot;</span>
+        <span class="k">print</span> <span class="s">&quot;execute action!&quot;</span>
+</pre></div>
+</div>
+<p><em>&#64;option</em> decorator uses the same arguments than Python&#8217;s
+<tt class="xref py py-meth docutils literal"><span class="pre">argparse.add_argument()</span></tt> method wich are:</p>
+<dl class="method">
+<dt>
+<tt class="descname">&#64;option.add_argument(name or flags...[, action][, nargs][, const][, default][, type][, choices][, required][, help][, metavar][, dest])</tt></dt>
+<dd></dd></dl>
+
+<p>Define how a single command-line argument should be parsed. Each parameter has
+its own more detailed description below, but in short they are:</p>
+<dl class="docutils">
+<dt>name or flags</dt>
+<dd>Either a name or a list of option strings, e.g. foo or -f, &#8211;foo.</dd>
+<dt>action</dt>
+<dd>The basic type of action to be taken when this argument is encountered
+at the command line.</dd>
+<dt>nargs</dt>
+<dd>The number of command-line arguments that should be consumed.</dd>
+<dt>const</dt>
+<dd>A constant value required by some action and nargs selections.</dd>
+<dt>default</dt>
+<dd>The value produced if the argument is absent from the command line.</dd>
+<dt>type</dt>
+<dd>The type to which the command-line argument should be converted.</dd>
+<dt>choices</dt>
+<dd>A container of the allowable values for the argument.</dd>
+<dt>required</dt>
+<dd>Whether or not the command-line option may be omitted (optionals only).</dd>
+<dt>help</dt>
+<dd>A brief description of what the argument does.</dd>
+<dt>metavar</dt>
+<dd>A name for the argument in usage messages.</dd>
+<dt>dest</dt>
+<dd>The name of the attribute to be added to the object returned by
+parse_args().</dd>
+</dl>
+</div>
+<div class="section" id="command-line-optional-arguments-in-builder-mode">
+<h2>Command Line Optional Arguments in builder mode<a class="headerlink" href="#command-line-optional-arguments-in-builder-mode" title="Permalink to this headline">¶</a></h2>
+<p>Adding command line optional arguments in builder mode is quite similar to
+the inherited mode.</p>
+<p>Consider this example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">subcmd.app</span> <span class="kn">import</span> <span class="n">App</span>
+
+<span class="k">def</span> <span class="nf">do_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Action subcommand&quot;&quot;&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;execute action!&quot;</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">App</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;myapp&quot;</span><span class="p">,</span>
+              <span class="n">description</span><span class="o">=</span><span class="s">&quot;My cli application&quot;</span><span class="p">,</span>
+              <span class="n">version</span><span class="o">=</span><span class="s">&quot;0.2&quot;</span><span class="p">,</span>
+              <span class="n">epilog</span><span class="o">=</span><span class="s">&quot;CLI list!&quot;</span><span class="p">)</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="s">&quot;action&quot;</span><span class="p">,</span> <span class="n">do_action</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">list_commands</span><span class="p">():</span>
+        <span class="k">print</span> <span class="n">method_name</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">remove_command</span><span class="p">(</span><span class="s">&quot;action&quot;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">cmdline</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To add an optional argument you should use the <a class="reference internal" href="api.html#subcmd.app.App" title="subcmd.app.App"><tt class="xref py py-class docutils literal"><span class="pre">subcmd.app.App</span></tt></a> API like
+this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">app</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s">&quot;action&quot;</span><span class="p">,</span> <span class="s">&quot;-q&quot;</span><span class="p">,</span> <span class="s">&quot;--quiet&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s">&#39;store_true&#39;</span><span class="p">,</span>
+           <span class="n">help</span><span class="o">=</span><span class="s">&#39;Quiet mode, no print to stdout&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 
         </div>
         <footer>

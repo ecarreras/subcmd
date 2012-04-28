@@ -98,25 +98,70 @@ execute action!</pre>
 <div class="section" id="defining-subcommands-in-builder-mode">
 <h2>Defining Subcommands in builder mode<a class="headerlink" href="#defining-subcommands-in-builder-mode" title="Permalink to this headline">¶</a></h2>
 <p>Taking as reference again the past example:</p>
-<div class="highlight-python"><pre>from subcmd.app import App
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">subcmd.app</span> <span class="kn">import</span> <span class="n">App</span>
 
-if __name__ == "__main__":
-        app = App(name="myapp",
-                          description="My cli application",
-                          version="0.2",
-                          epilog="CLI list!")s
-        app.cmdline()</pre>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">App</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;myapp&quot;</span><span class="p">,</span>
+              <span class="n">description</span><span class="o">=</span><span class="s">&quot;My cli application&quot;</span><span class="p">,</span>
+              <span class="n">version</span><span class="o">=</span><span class="s">&quot;0.2&quot;</span><span class="p">,</span>
+              <span class="n">epilog</span><span class="o">=</span><span class="s">&quot;CLI list!&quot;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">cmdline</span><span class="p">()</span>
+</pre></div>
 </div>
 <p><a class="reference internal" href="api.html#subcmd.app.App" title="subcmd.app.App"><tt class="xref py py-class docutils literal"><span class="pre">subcmd.app.App</span></tt></a> class provides methods to add, remove or list available
 commands.</p>
 <div class="section" id="adding-a-command">
 <h3>Adding a command<a class="headerlink" href="#adding-a-command" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="subcmd.app.App.add_command">
+<tt class="descclassname">subcmd.app.App.</tt><tt class="descname">add_command</tt><big>(</big><em>self</em>, <em>name</em>, <em>command_func</em><big>)</big><a class="headerlink" href="#subcmd.app.App.add_command" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>To add a new command call <a class="reference internal" href="#subcmd.app.App.add_command" title="subcmd.app.App.add_command"><tt class="xref py py-meth docutils literal"><span class="pre">subcmd.app.App.add_command()</span></tt></a> method and pass
+a name and a callable to it.</p>
 </div>
 <div class="section" id="listing-available-commands">
 <h3>Listing available commands<a class="headerlink" href="#listing-available-commands" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="subcmd.app.App.list_commands">
+<tt class="descclassname">subcmd.app.App.</tt><tt class="descname">list_commands</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#subcmd.app.App.list_commands" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Listing all commands <a class="reference internal" href="#subcmd.app.App.list_commands" title="subcmd.app.App.list_commands"><tt class="xref py py-meth docutils literal"><span class="pre">subcmd.app.App.list_commands()</span></tt></a> will return all keys
+( name of the commands ) available on the instancied class.</p>
 </div>
 <div class="section" id="removing-an-existing-command">
 <h3>Removing an existing command<a class="headerlink" href="#removing-an-existing-command" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="subcmd.app.App.remove_command">
+<tt class="descclassname">subcmd.app.App.</tt><tt class="descname">remove_command</tt><big>(</big><em>self</em>, <em>name</em><big>)</big><a class="headerlink" href="#subcmd.app.App.remove_command" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>To remove a command call <a class="reference internal" href="#subcmd.app.App.remove_command" title="subcmd.app.App.remove_command"><tt class="xref py py-meth docutils literal"><span class="pre">subcmd.app.App.remove_command()</span></tt></a> and pass a name
+to it. If the command is available in the instancied class will be removed.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">subcmd.app</span> <span class="kn">import</span> <span class="n">App</span>
+
+<span class="k">def</span> <span class="nf">do_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Action subcommand&quot;&quot;&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;execute action!&quot;</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">App</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;myapp&quot;</span><span class="p">,</span>
+              <span class="n">description</span><span class="o">=</span><span class="s">&quot;My cli application&quot;</span><span class="p">,</span>
+              <span class="n">version</span><span class="o">=</span><span class="s">&quot;0.2&quot;</span><span class="p">,</span>
+              <span class="n">epilog</span><span class="o">=</span><span class="s">&quot;CLI list!&quot;</span><span class="p">)</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="s">&quot;action&quot;</span><span class="p">,</span> <span class="n">do_action</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">list_commands</span><span class="p">():</span>
+        <span class="k">print</span> <span class="n">method_name</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">remove_command</span><span class="p">(</span><span class="s">&quot;action&quot;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">cmdline</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Not that we can add commands to our CLI tool, the next step is to add arguments
+to them.</p>
+<p><a class="reference internal" href="manual_options.html#manual-options"><em>Next: Defining Command Line Optional Arguments</em></a></p>
 </div>
 </div>
 </div>
